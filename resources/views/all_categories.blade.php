@@ -2,7 +2,7 @@
 
 @section('content_page')
 
-    @include('layouts.nav') 
+    @include('layouts.my_nav') 
 
     <div class="container  " style="margin-top: 150px" >
         

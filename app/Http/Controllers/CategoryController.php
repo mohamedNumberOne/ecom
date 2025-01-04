@@ -21,11 +21,17 @@ class CategoryController extends CompanyController
     /**
      * Show the form for creating a new resource.
      */
+
+    public function add_category()
+    {
+        return view("admin.categories") ;
+    }
+
     public function create()
     {
         //
     }
-
+    
     /**
      * Store a newly created resource in storage.
      */

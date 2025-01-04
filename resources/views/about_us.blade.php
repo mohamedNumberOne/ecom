@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('content_page')
-    @include('layouts.nav')
+    @include('layouts.my_nav')
 
     <!-- ***** About Area Starts ***** -->
     <div class="about-us ">

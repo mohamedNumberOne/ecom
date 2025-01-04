@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('content_page')
-    @include('layouts.nav')
+    @include('layouts.my_nav')
 
 
     <!-- ***** Main Banner Area Start ***** -->
