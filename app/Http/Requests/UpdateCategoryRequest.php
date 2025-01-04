@@ -11,7 +11,7 @@ class UpdateCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return 1 ;
     }
 
     /**
@@ -22,7 +22,11 @@ class UpdateCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nom_category' => [  'max:255'],
+            'petite_description' => ["required" , 'max:255'],
+            'grande_description' => ['required'],
+            'photo_1' => [ 'image', 'max:2048'],
+            'photo_2' => [  'image', 'max:2048'] 
         ];
     }
 }

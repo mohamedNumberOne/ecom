@@ -28,11 +28,18 @@ Route::prefix("admin")->middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    Route::get('/add_category', [CategoryController::class, 'add_category'])->name('add_category');
+    Route::get('/categories_page', [CategoryController::class, 'categories_page'])->name('categories_page');
+    Route::post('/add_category', [CategoryController::class, 'create'])->name('add_category');
+    Route::delete('/delete_category/{id}', [CategoryController::class, 'delete_category'])->name('delete_category');
+    Route::get('/show_category_admin/{id}', [CategoryController::class, 'show_category_admin'])->name('show_category_admin');
+    Route::put('/update_category/{id}', [CategoryController::class, 'update_category'])->name('update_category');
+
+    
+    
     Route::get('/add_product', [ProductController::class, 'add_product'])->name('add_product');
 
 
-
+    
 
 
     Route::get('/dashboard', function () {

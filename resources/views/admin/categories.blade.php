@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }} d
+            {{ __('Categorie') }}
         </h2>
     </x-slot>
 
@@ -9,72 +9,171 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                   <form class="row g-3">
-  <div class="col-md-4">
-    <label for="validationServer01" class="form-label">First name</label>
-    <input type="text" class="form-control is-valid" id="validationServer01" value="Mark" required>
-    <div class="valid-feedback">
-      Looks good!
-    </div>
-  </div>
-  <div class="col-md-4">
-    <label for="validationServer02" class="form-label">Last name</label>
-    <input type="text" class="form-control is-valid" id="validationServer02" value="Otto" required>
-    <div class="valid-feedback">
-      Looks good!
-    </div>
-  </div>
-  <div class="col-md-4">
-    <label for="validationServerUsername" class="form-label">Username</label>
-    <div class="input-group has-validation">
-      <span class="input-group-text" id="inputGroupPrepend3">@</span>
-      <input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
-      <div id="validationServerUsernameFeedback" class="invalid-feedback">
-        Please choose a username.
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <label for="validationServer03" class="form-label">City</label>
-    <input type="text" class="form-control is-invalid" id="validationServer03" aria-describedby="validationServer03Feedback" required>
-    <div id="validationServer03Feedback" class="invalid-feedback">
-      Please provide a valid city.
-    </div>
-  </div>
-  <div class="col-md-3">
-    <label for="validationServer04" class="form-label">State</label>
-    <select class="form-select is-invalid" id="validationServer04" aria-describedby="validationServer04Feedback" required>
-      <option selected disabled value="">Choose...</option>
-      <option>...</option>
-    </select>
-    <div id="validationServer04Feedback" class="invalid-feedback">
-      Please select a valid state.
-    </div>
-  </div>
-  <div class="col-md-3">
-    <label for="validationServer05" class="form-label">Zip</label>
-    <input type="text" class="form-control is-invalid" id="validationServer05" aria-describedby="validationServer05Feedback" required>
-    <div id="validationServer05Feedback" class="invalid-feedback">
-      Please provide a valid zip.
-    </div>
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
-      <label class="form-check-label" for="invalidCheck3">
-        Agree to terms and conditions
-      </label>
-      <div id="invalidCheck3Feedback" class="invalid-feedback">
-        You must agree before submitting.
-      </div>
-    </div>
-  </div>
-  <div class="col-12">
-    <button class="btn btn-primary" type="submit">Submit form</button>
-  </div>
-</form>
+
+
+                    <h1 class="mb-4"> Ajouter <i class="fa-solid fa-square-plus"></i> </h1>
+
+                    <div>
+                        @if (session()->has('msg') && session()->has('class'))
+                            <div class="alert alert-{{ session('class') }} text-center"> {{ session('msg') }} </div>
+                        @endif
+
+
+
+                        <form class="row g-3 needs-validation" novalidate action="{{ route('add_category') }}"
+                            enctype="multipart/form-data" method="POST">
+                            @csrf
+                            <div class="col-md-4 position-relative">
+                                <label for="validationTooltip01" class="form-label"> Nom categorie </label>
+                                <input type="text" class="form-control" id="validationTooltip01" required
+                                    name="nom_category">
+                                <div class="invalid-tooltip">
+                                    Ajouter un nom
+                                </div>
+                                @error('nom_category')
+                                    <div class="bg-danger text-white d-inline-block p-1 "> {{ $message }} </div>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-4 position-relative">
+                                <label for="validationTooltip02" class="form-label">photo_1 </label>
+                                <input type="file" class="form-control" id="validationTooltip02" required
+                                    accept="image/*" name="photo_1">
+                                <div class="invalid-tooltip">
+                                    Ajouter photo_1
+                                </div>
+                                @error('photo_1')
+                                    <div class="bg-danger text-white d-inline-block p-1 "> {{ $message }} </div>
+                                @enderror
+                            </div>
+
+
+                            <div class="col-md-4 position-relative">
+                                <label for="validationTooltipUsername" class="form-label">photo_2</label>
+                                <div class="input-group has-validation">
+
+                                    <input type="file" class="form-control" id="validationTooltipUsername" required
+                                        accept="image/*" name="photo_2">
+                                    <div class="invalid-tooltip">
+                                        Ajouter photo_2
+                                    </div>
+                                </div>
+                                @error('photo_2')
+                                    <div class="bg-danger text-white d-inline-block p-1 "> {{ $message }} </div>
+                                @enderror
+                            </div>
+
+
+
+
+                            <div class="col-md-6 col-12 position-relative">
+                                <label for="validationTooltip06" class="form-label">petite description</label>
+                                <textarea id="validationTooltip06" class="form-control" required rows="5" name="petite_description"></textarea>
+
+                                <div class="invalid-tooltip">
+                                    Ajouter une description
+                                </div>
+                                @error('petite_description')
+                                    <div class="bg-danger text-white d-inline-block p-1 "> {{ $message }} </div>
+                                @enderror
+                            </div>
+
+
+                            <div class="col-md-6  col-12 position-relative">
+                                <label for="validationTooltip07" class="form-label">grande description</label>
+                                <textarea id="validationTooltip07" class="form-control" required rows="10" name="grande_description"></textarea>
+
+                                <div class="invalid-tooltip">
+                                    Ajouter une description
+                                </div>
+                                @error('grande_description')
+                                    <div class="bg-danger text-white d-inline-block p-1 "> {{ $message }} </div>
+                                @enderror
+                            </div>
+
+
+
+                            <div class="col-12">
+                                <button class="btn btn-primary" type="submit"> Ajouter </button>
+                            </div>
+                        </form>
+                    </div>
+
+
+
+
+
+
                 </div>
             </div>
         </div>
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4 mt-5">
+                <h3 class="mb-3">Liste des catégories </h3>
+                <table class="table table-striped table-hover">
+                    <tr>
+                        <td> Catégorie </td>
+                        <td> photo 1 </td>
+                        <td> photo 2 </td>
+                        <td> petite description </td>
+                        <td> grande description </td>
+                        <td> date création </td>
+                        <td> action </td>
+                    </tr>
+                    @foreach ($all_categories as $category)
+                        <tr>
+                            <td> {{ $category->nom_category }} </td>
+                            <td>
+                                <img src="{{ asset('storage/' . $category->photo_1) }}" alt="img" width="50px">
+                            </td>
+                            <td>
+                                <img src="{{ asset('storage/' . $category->photo_2) }}" alt="img" width="50px">
+                            </td>
+                            <td> {{ $category->petite_desc }} </td>
+                            <td> {{ $category->grande_desc }} </td>
+                            <td> {{ $category->created_at ? $category->created_at->format('Y/m/d') : 'Date inconnue' }}
+                            </td>
+                            <td>
+
+                                <form action="{{ route('delete_category', $id = $category->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" class="btn btn-danger" value="supprimer">
+                                </form>
+
+                                <a href="{{ route('show_category_admin', $id = $category->id) }}"
+                                    class="btn btn-primary mt-2"> modifier </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+
+            </div>
+        </div>
     </div>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+
 </x-app-layout>

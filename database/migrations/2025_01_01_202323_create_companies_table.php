@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->string("nom_entreprise");
-            $table->string("email");
-            $table->string("tlf");
-            $table->text("text_about_us");
+            $table->string("nom_entreprise")->nullable();
+            $table->string("email")->nullable();
+            $table->string("tlf")->nullable();
+            $table->text("text_about_us")->nullable();
             $table->string("img");
-            $table->string("lien_fb");
-            $table->string("lien_insta");
-            $table->text("adresse");
-            $table->text("localisation");
-            $table->string("logo");
+            $table->string("lien_fb")->nullable();
+            $table->string("lien_insta")->nullable();
+            $table->text("adresse")->nullable();
+            $table->text("localisation")->nullable();
+            $table->string("logo")->nullable();
            
             $table->timestamps();
         });

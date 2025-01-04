@@ -11,8 +11,12 @@ class StoreCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return   true;
     }
+
+
+
+
 
     /**
      * Get the validation rules that apply to the request.
@@ -22,7 +26,23 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nom_category' => ['required', 'unique:categories', 'max:255'],
+            'petite_description' => ['required', 'max:255'],
+            'grande_description' => ['required'],
+            'photo_1' => ['required', 'image', 'max:2048'],
+            'photo_2' => ['required', 'image', 'max:2048'] 
         ];
     }
+
+
+    public function messages(): array
+    {
+        return [
+            'nom_category.unique' => "ce nom existe déja!" ,
+
+            'photo_1.max' =>  "max 2Mb" ,
+            'photo_2.max' => "max 2Mb" ,
+        ];
+    }
+
 }

@@ -15,7 +15,7 @@ class Category extends Model
 
 
         "nom_category",
-        "petit_desc",
+        "petite_desc",
         "grande_desc",
         "photo_1",
         "photo_2",
