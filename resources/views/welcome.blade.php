@@ -1,8 +1,7 @@
 @extends('layouts.template')
 
 @section('content_page')
-
-    @include('layouts.nav') 
+    @include('layouts.nav')
 
 
     <!-- ***** Main Banner Area Start ***** -->
@@ -13,8 +12,8 @@
                     <div class="left-content">
                         <div class="thumb">
                             <div class="inner-content">
-                                <h4> Nous sommes 
-                                    {{$companies_info-> nom_entreprise }}   
+                                <h4> Nous sommes
+                                    {{ $companies_info->nom_entreprise }}
                                 </h4>
 
                                 <div class="main-border-button">
@@ -38,10 +37,11 @@
                                         <div class="hover-content">
                                             <div class="inner">
                                                 <h4>Femmes</h4>
-                                                <p>Découvrez les meilleures  Collections pour les Femmes !
+                                                <p>Découvrez les meilleures Collections pour les Femmes !
                                                 </p>
                                                 <div class="main-border-button">
-                                                    <a href="{{ route('show_category' , [$id = 2 ]) }}"  wire:navigate >Découvrir... </a>
+                                                    <a href="{{ route('show_category', [($id = 2)]) }}"
+                                                        wire:navigate>Découvrir... </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -59,10 +59,11 @@
                                         <div class="hover-content">
                                             <div class="inner">
                                                 <h4>Hommes</h4>
-                                                <p>Découvrez les meilleures  Collections pour les Hommes !
+                                                <p>Découvrez les meilleures Collections pour les Hommes !
                                                 </p>
                                                 <div class="main-border-button">
-                                                    <a  href="{{ route('show_category' , [$id = 1 ]) }}"wire:navigate >Découvrir...</a>
+                                                    <a
+                                                        href="{{ route('show_category', [($id = 1)]) }}"wire:navigate>Découvrir...</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -75,15 +76,16 @@
                                     <div class="thumb">
                                         <div class="inner-content">
                                             <h4>Enfants</h4>
-                                         
+
                                         </div>
                                         <div class="hover-content">
                                             <div class="inner">
                                                 <h4>Enfants</h4>
-                                                <p>Découvrez les meilleures  Collections pour les Enfants !
+                                                <p>Découvrez les meilleures Collections pour les Enfants !
                                                 </p>
                                                 <div class="main-border-button">
-                                                    <a  href="{{ route('show_category' , [$id = 3 ]) }}" wire:navigate >Découvrir...</a>
+                                                    <a href="{{ route('show_category', [($id = 3)]) }}"
+                                                        wire:navigate>Découvrir...</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -96,15 +98,16 @@
                                     <div class="thumb">
                                         <div class="inner-content">
                                             <h4>Accessoires</h4>
-                                          
+
                                         </div>
                                         <div class="hover-content">
                                             <div class="inner">
                                                 <h4>Accessories</h4>
-                                                <p>Découvrez les meilleurs  Accessories !
+                                                <p>Découvrez les meilleurs Accessories !
                                                 </p>
                                                 <div class="main-border-button">
-                                                    <a  href="{{ route('show_category' , [$id = 4 ]) }}" wire:navigate >Découvrir...</a>
+                                                    <a href="{{ route('show_category', [($id = 4)]) }}"
+                                                        wire:navigate>Découvrir...</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -244,7 +247,7 @@
     <!-- ***** Men Area Ends ***** -->
 
 
- 
+
 
     <!-- ***** Explore Area Starts ***** -->
     <section class="section" id="explore">
@@ -355,21 +358,22 @@
                     <div class="row">
                         <div class="col-6">
                             <ul>
-                                <li>Adresse:<br><span> 
-                                    {{-- {{ adresse }}  --}}
+                                <li>Adresse:<br><span>
+                                        {{-- {{ adresse }}  --}}
                                     </span></li>
-                                <li>Phone:<br><span>010-020-0340
-                                     {{-- {{ $tlf }}  --}}
+                                <li>Phone:<br><span>
+                                        {{ $companies_info->tlf }}
                                     </span></li>
                             </ul>
                         </div>
                         <div class="col-6">
                             <ul>
                                 <li>Work Hours:<br><span>07:30 AM - 9:30 PM Daily</span></li>
-                                <li>Email:<br><span>info@company.com 
-                                    {{-- {{ email }}  --}}
-                                     </span></li>
-                                <li>Social Media:<br><span><a href="#">Facebook</a>, <a href="#">Instagram</a>
+                                <li>Email:<br><span>
+                                        {{ $companies_info->email }}
+                                    </span></li>
+                                <li>Social Media:<br><span><a href="{{ $companies_info-> lien_fb }}">Facebook</a>,
+                                        <a href="{{ $companies_info-> lien_insta }}">Instagram</a>
                             </ul>
                         </div>
                     </div>

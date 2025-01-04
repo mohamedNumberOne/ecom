@@ -30,8 +30,8 @@
                                 </a>
                             </li>
                             <li class="scroll-to-section">
-                                <a href="#"
-                                    class="{{ Request::routeIs('about_us') ? 'active' : '' }}"   wire:navigate  >
+                                <a href="{{ route('all_pro') }}"
+                                    class="{{ Request::routeIs('all_pro') ? 'active' : '' }}"   wire:navigate  >
                                     Produits
                                 </a>
                             </li>
@@ -41,7 +41,7 @@
                                     À propos
                                 </a>
                             </li>
-                            <li class="scroll-to-section"><a href="#men">Men's</a></li>
+                          
                             <!-- <li class="submenu">
                                 <a href="javascript:;">Pages</a>
                                 <ul>

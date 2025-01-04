@@ -54,15 +54,15 @@
                 <div class="col-lg-3">
                     <h4> Liens rapides </h4>
                     <ul>
-                        <li><a href="{{route('welcome')}}">Accueil</a></li>
-                        <li><a href="{{route('about_us')}}">À propos</a></li>
+                        <li><a href="{{route('welcome')}}" wire:navigate >Accueil</a></li>
+                        <li><a href="{{route('about_us')}}" wire:navigate  >À propos</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
                     <h4> Liens rapides </h4>
                     <ul>
-                        <li><a href="/">Accueil</a></li>
-                        <li><a href="/about-us"> À propos</a></li>
+                        <li><a href="/" wire:navigate >Accueil</a></li>
+                        <li><a href="/about-us" wire:navigate > À propos</a></li>
                         <li><a href="{{  $companies_info->lien_fb }}"><i class="fa-brands fa-facebook"></i></a></li>
                         <li><a href="{{  $companies_info->lien_insta }}"><i class="fa fa-brands fa-instagram"></i></a></li>
                     </ul>
