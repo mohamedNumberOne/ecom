@@ -34,10 +34,13 @@ Route::prefix("admin")->middleware('auth')->group(function () {
     Route::get('/show_category_admin/{id}', [CategoryController::class, 'show_category_admin'])->name('show_category_admin');
     Route::put('/update_category/{id}', [CategoryController::class, 'update_category'])->name('update_category');
 
-    
-    
-    Route::get('/add_product', [ProductController::class, 'add_product'])->name('add_product');
 
+    Route::get('/products_page', [ProductController::class, 'products_page_admin'])->name('products_page_admin'); // afficher
+    Route::post('/add_product', [ProductController::class, 'store'])->name('add_product'); // add 
+    Route::get('/update_product/{id}', [ProductController::class, 'update_product'])->name('update_product_page'); // modif 
+    Route::delete('/delete_product{id}', [ProductController::class, 'delete'])->name('delete_product'); // supp
+
+   
 
     
 

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('categorie') }}
+            {{ __('Produits') }}
         </h2>
     </x-slot>
 
@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <h1 class="mb-4"> Modifier la categorie ' {{ $category->nom_category }} ' <i class="fa-solid fa-pen-to-square"></i> </h1>
+                    <h1 class="mb-4"> Modifier Le produit ' {{ $pro->nom_pro }} ' <i class="fa-solid fa-pen-to-square"></i> </h1>
 
                     <div>
 
@@ -19,15 +19,15 @@
                         @endif
 
 
-                        <form class="row g-3 needs-validation" novalidate action="{{ route('update_category' ,  [$category-> id ]) }}"
+                        <form class="row g-3 needs-validation" novalidate action="{{ route('update_category' ,  [$pro-> id ]) }}"
                             enctype="multipart/form-data" method="POST">
                             @csrf
                             @method('PUT')
 
                             <div class="col-md-6 position-relative">
-                                <label for="validationTooltip01" class="form-label"> Nom category </label>
+                                <label for="validationTooltip01" class="form-label"> Nom Produit </label>
                                 <input type="text" class="form-control" id="validationTooltip01"  
-                                    value="{{ $category->nom_category }}" name="nom_category">
+                                    value="{{ $pro->nom_pro }}" name="nom_category">
                                 <div class="invalid-tooltip">
                                     Ajouter un nom
                                 </div>
@@ -40,14 +40,14 @@
                             <div class="col-md-12 position-relative">
                                 <div class="row">
                                     <div class="col-md-6 col-12">
-                                        <label for="validationTooltipUsername" class="form-label">photo_1</label>
+                                        <label for="validationTooltipUsername" class="form-label">photo principale </label>
                                         <div class="input-group has-validation">
 
                                             <input type="file" class="form-control" id="validationTooltipUsername"
                                                   accept="image/*" name="photo_1">
 
                                             <div class="invalid-tooltip">
-                                                Ajouter photo_1
+                                                Ajouter principale
                                             </div>
                                         </div>
 
@@ -59,7 +59,7 @@
                                     </div>
 
                                     <div class="col-md-6 col-12">
-                                        <img src=" {{ asset('storage/' . $category->photo_1) }} " width="100px"
+                                        <img src=" {{ asset('storage/' . $pro->photo_1) }} " width="100px"
                                             alt="photo_1">
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@
                                     </div>
 
                                     <div class="col-md-6 col-12">
-                                        <img src=" {{ asset('storage/' . $category->photo_2) }} " width="100px"
+                                        <img src=" {{ asset('storage/' . $pro->photo_2) }} " width="100px"
                                             alt="photo_2">
                                     </div>
                                 </div>
@@ -103,7 +103,7 @@
 
                             <div class="col-md-6 col-12 position-relative">
                                 <label for="validationTooltip06" class="form-label">petite description</label>
-                                <textarea id="validationTooltip06" class="form-control"   rows="5" name="petite_description">{{ $category->petite_desc }}</textarea>
+                                <textarea id="validationTooltip06" class="form-control"   rows="5" name="petite_description">{{ $pro->petite_desc }}</textarea>
 
                                 <div class="invalid-tooltip">
                                     Ajouter une description
@@ -116,7 +116,7 @@
 
                             <div class="col-md-6  col-12 position-relative">
                                 <label for="validationTooltip07" class="form-label">grande description</label>
-                                <textarea id="validationTooltip07" class="form-control"   rows="10" name="grande_description">{{ $category->grande_desc }}</textarea>
+                                <textarea id="validationTooltip07" class="form-control"   rows="10" name="grande_description">{{ $pro->grande_desc }}</textarea>
 
                                 <div class="invalid-tooltip">
                                     Ajouter une description

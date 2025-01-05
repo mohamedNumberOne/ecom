@@ -108,50 +108,86 @@
             </div>
         </div>
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        @if (count($all_categories) > 0)
 
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4 mt-5">
-                <h3 class="mb-3">Liste des catégories </h3>
-                <table class="table table-striped table-hover">
-                    <tr>
-                        <td> Catégorie </td>
-                        <td> photo 1 </td>
-                        <td> photo 2 </td>
-                        <td> petite description </td>
-                        <td> grande description </td>
-                        <td> date création </td>
-                        <td> action </td>
-                    </tr>
-                    @foreach ($all_categories as $category)
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4 mt-5">
+                    <h3 class="mb-3">Liste des catégories </h3>
+                    <table class="table table-striped table-hover">
                         <tr>
-                            <td> {{ $category->nom_category }} </td>
-                            <td>
-                                <img src="{{ asset('storage/' . $category->photo_1) }}" alt="img" width="50px">
-                            </td>
-                            <td>
-                                <img src="{{ asset('storage/' . $category->photo_2) }}" alt="img" width="50px">
-                            </td>
-                            <td> {{ $category->petite_desc }} </td>
-                            <td> {{ $category->grande_desc }} </td>
-                            <td> {{ $category->created_at ? $category->created_at->format('Y/m/d') : 'Date inconnue' }}
-                            </td>
-                            <td>
-
-                                <form action="{{ route('delete_category', $id = $category->id) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="submit" class="btn btn-danger" value="supprimer">
-                                </form>
-
-                                <a href="{{ route('show_category_admin', $id = $category->id) }}"
-                                    class="btn btn-primary mt-2"> modifier </a>
-                            </td>
+                            <td> Catégorie </td>
+                            <td> photo 1 </td>
+                            <td> photo 2 </td>
+                            <td> petite description </td>
+                            <td> grande description </td>
+                            <td> date création </td>
+                            <td> action </td>
                         </tr>
-                    @endforeach
-                </table>
+                        @foreach ($all_categories as $category)
+                            <tr>
+                                <td> {{ $category->nom_category }} </td>
+                                <td>
+                                    <img src="{{ asset('storage/' . $category->photo_1) }}" alt="img"
+                                        width="50px">
+                                </td>
+                                <td>
+                                    <img src="{{ asset('storage/' . $category->photo_2) }}" alt="img"
+                                        width="50px">
+                                </td>
+                                <td> {{ $category->petite_desc }} </td>
+                                <td> {{ $category->grande_desc }} </td>
+                                <td> {{ $category->created_at ? $category->created_at->format('Y/m/d') : 'Date inconnue' }}
+                                </td>
+                                <td>
 
+                                    <form action="{{ route('delete_category', $id = $category->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+
+
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#{{ $category->id }}">
+                                            supprimer
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="{{ $category->id }}" tabindex="-1"
+                                            aria-labelledby="{{ $category->nom_category }}" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5"
+                                                            id="{{ $category->nom_category }}">
+                                                            Confirmation </h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Anuller</button>
+                                                        <button type="submit" class="btn btn-danger"> supprimer
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+
+                                    <a href="{{ route('show_category_admin', $id = $category->id) }}"
+                                        class="btn btn-primary mt-2"> modifier </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </table>
+
+                </div>
             </div>
-        </div>
+            
+        @endif
     </div>
 
     <script>

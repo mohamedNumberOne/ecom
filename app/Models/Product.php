@@ -20,6 +20,7 @@ class Product extends Model
         "prix",
         "type_mesure",
         "details",
+        "category_id",
  
     ];
 

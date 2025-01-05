@@ -34,8 +34,6 @@ class CategoryController extends CompanyController
     public function create(StoreCategoryRequest $request)
     {
 
-
-
         // return $request ;
 
 
@@ -79,22 +77,31 @@ class CategoryController extends CompanyController
     public function show_category($id)
     {
         $category = Category::find($id);
-        return view("details_category", compact("category"));
+        if ($category) {
+            return view("details_category", compact("category"));
+        } else {
+            return redirect()->back();
+        }
     }
 
 
     public function show_category_admin($id)
     {
         $category = Category::find($id);
-        return view("admin.update_category", compact("category"));
+        if ($category) {
+            return view("admin.update_category", compact("category"));
+        } else {
+            return redirect()->back();
+        }
     }
 
 
     public function delete_category($id)
     {
         $category = Category::find($id);
-        $category->photo_1 ? unlink('storage/' .  $category->photo_1) : "";
-        is_file($category->photo_2) ? unlink('storage/' .  $category->photo_2) : "";
+
+        file_exists($category->photo_1) ? unlink('storage/' .  $category->photo_1) : "";
+        file_exists($category->photo_2) ? unlink('storage/' .  $category->photo_2) : "";
 
         $category->delete();
         $msg = "Catégorie supprimé !";
@@ -108,15 +115,16 @@ class CategoryController extends CompanyController
         $category = Category::find($id);
 
 
+
         $msg = "";
         $class = "success";
 
         if ($request->hasFile("photo_1") &&  $request->file('photo_1')->isValid()) {
 
-            
+
 
             if ($category->photo_1 && Storage::disk('public')->exists($category->photo_1)) {
-                Storage::disk('public')->delete($category->photo_1 );
+                Storage::disk('public')->delete($category->photo_1);
             }
 
             $path_photo_1 = $request->file('photo_1')->store('categories', 'public');
