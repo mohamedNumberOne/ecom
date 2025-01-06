@@ -8,6 +8,8 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Controllers\CompanyController;
 
+use function Livewire\store;
+
 class ProductController extends CompanyController
 {
     /**
@@ -26,7 +28,8 @@ class ProductController extends CompanyController
     {
         $all_pro = Product::all();
         $all_categories = $this->get_all_cat();
-        return view('admin.products_admin', compact('all_pro', 'all_categories'));
+
+        return view('admin.products_admin' , compact('all_pro' , "all_categories") );
     }
 
     public function get_all_cat()
@@ -93,18 +96,53 @@ class ProductController extends CompanyController
     }
 
 
-    public function update_product($id)
+    public function update_product_page($id)
+    {
+        $pro = Product::find($id);
+        $all_categories = $this->get_all_cat();
+
+        $msg = "Produit modifié !";
+        $class = "success";
+        if ($pro) {
+
+            return view("admin.update_product", compact('pro', "all_categories"));
+        } else {
+
+            return redirect()->back();
+        }
+    }
+
+    public function update_product($id, UpdateProductRequest $request)
     {
         $pro = Product::find($id);
 
-        if ($pro)  {
+        if ($pro) {
+            $path_photo_principale =  $pro->photo_principale;
 
-            return view("admin.update_product" , compact('pro'));
+            if ($request->hasFile("photo_principale") &&  $request->file('photo_principale')->isValid()) {
 
+                $path_photo_principale = store();
+            }
+
+            // > photo_principale
+            $pro::update([
+
+                'nom_pro'  => $request->nom_pro,
+                'photo_principale'  => $path_photo_principale,
+                'prix'  => $request->prix,
+                'type_mesure'  => $request->type_mesure,
+                'details'  => $request->details,
+                'category_id'  => $request->category_id,
+
+            ]);
+
+            $msg = "Produit modifié !";
+            $class = "success";
         } else {
-           
-             return redirect()->back() ;
+            $msg = "Erreur !";
+            $class = "danger";
         }
 
+        return redirect()->back()->with(['msg' => $msg, 'class' => $class]);
     }
 }

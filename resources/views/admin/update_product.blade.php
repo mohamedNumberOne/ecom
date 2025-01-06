@@ -10,7 +10,8 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <h1 class="mb-4"> Modifier Le produit ' {{ $pro->nom_pro }} ' <i class="fa-solid fa-pen-to-square"></i> </h1>
+                    <h1 class="mb-4"> Modifier Le produit ' {{ $pro->nom_pro }} ' <i
+                            class="fa-solid fa-pen-to-square"></i> </h1>
 
                     <div>
 
@@ -19,40 +20,60 @@
                         @endif
 
 
-                        <form class="row g-3 needs-validation" novalidate action="{{ route('update_category' ,  [$pro-> id ]) }}"
-                            enctype="multipart/form-data" method="POST">
+                        <form class="row g-3 needs-validation" novalidate
+                            action="{{ route('update_product', [$pro->id]) }}" enctype="multipart/form-data"
+                            method="POST">
                             @csrf
                             @method('PUT')
 
                             <div class="col-md-6 position-relative">
                                 <label for="validationTooltip01" class="form-label"> Nom Produit </label>
-                                <input type="text" class="form-control" id="validationTooltip01"  
-                                    value="{{ $pro->nom_pro }}" name="nom_category">
+                                <input type="text" class="form-control" id="validationTooltip01"
+                                    value="{{ $pro->nom_pro }}" name="nom_pro">
                                 <div class="invalid-tooltip">
                                     Ajouter un nom
                                 </div>
-                                @error('nom_category')
+                                @error('nom_pro')
                                     <div class="bg-danger text-white d-inline-block p-1 "> {{ $message }} </div>
                                 @enderror
                             </div>
+
+                            <div class="col-md-6 col-12 position-relative">
+                                <label class="form-label"> Catégorie </label>
+                                <select class="form-control" required name="category_id">
+                                    <option value=""> </option>
+                                    @foreach ($all_categories as $cat)
+                                        <option value="{{ $cat->id }}"> {{ $cat->nom_category }} </option>
+                                    @endforeach
+                                </select>
+
+                                <div class="invalid-tooltip">
+                                    Ajouter la Categorie
+                                </div>
+                                @error('category_id')
+                                    <div class="bg-danger text-white d-inline-block p-1 "> {{ $message }} </div>
+                                @enderror
+                            </div>
+
                             <hr>
 
                             <div class="col-md-12 position-relative">
                                 <div class="row">
                                     <div class="col-md-6 col-12">
-                                        <label for="validationTooltipUsername" class="form-label">photo principale </label>
+                                        <label for="validationTooltipUsername1" class="form-label">photo principale
+                                        </label>
                                         <div class="input-group has-validation">
 
-                                            <input type="file" class="form-control" id="validationTooltipUsername"
-                                                  accept="image/*" name="photo_1">
+                                            <input type="file" class="form-control" id="validationTooltipUsername1"
+                                                accept="image/*" name="photo_principale">
 
                                             <div class="invalid-tooltip">
-                                                Ajouter principale
+                                                Ajouter photo principale
                                             </div>
                                         </div>
 
 
-                                        @error('photo_1')
+                                        @error('photo_principale')
                                             <div class="bg-danger text-white d-inline-block p-1 "> {{ $message }}
                                             </div>
                                         @enderror
@@ -72,19 +93,20 @@
                             <div class="col-md-12 position-relative">
                                 <div class="row">
                                     <div class="col-md-6 col-12">
-                                        <label for="validationTooltipUsername" class="form-label">photo_2</label>
+                                        <label for="validationTooltipUsername" class="form-label">les photos
+                                            slide</label>
                                         <div class="input-group has-validation">
 
                                             <input type="file" class="form-control" id="validationTooltipUsername"
-                                                  accept="image/*" name="photo_2">
+                                                accept="image/*" name="photo_slide" multiple>
 
                                             <div class="invalid-tooltip">
-                                                Ajouter photo_2
+                                                Ajouter photo_slide
                                             </div>
                                         </div>
 
 
-                                        @error('photo_2')
+                                        @error('photo_slide')
                                             <div class="bg-danger text-white d-inline-block p-1 "> {{ $message }}
                                             </div>
                                         @enderror
@@ -102,29 +124,19 @@
                             <hr>
 
                             <div class="col-md-6 col-12 position-relative">
-                                <label for="validationTooltip06" class="form-label">petite description</label>
-                                <textarea id="validationTooltip06" class="form-control"   rows="5" name="petite_description">{{ $pro->petite_desc }}</textarea>
+                                <label for="validationTooltip06" class="form-label">   Détails </label>
+                                <textarea id="validationTooltip06" class="form-control" rows="10" name="details">{{ $pro->petite_desc }}</textarea>
 
                                 <div class="invalid-tooltip">
                                     Ajouter une description
                                 </div>
-                                @error('petite_description')
+                                @error('details')
                                     <div class="bg-danger text-white d-inline-block p-1 "> {{ $message }} </div>
                                 @enderror
                             </div>
 
 
-                            <div class="col-md-6  col-12 position-relative">
-                                <label for="validationTooltip07" class="form-label">grande description</label>
-                                <textarea id="validationTooltip07" class="form-control"   rows="10" name="grande_description">{{ $pro->grande_desc }}</textarea>
 
-                                <div class="invalid-tooltip">
-                                    Ajouter une description
-                                </div>
-                                @error('grande_description')
-                                    <div class="bg-danger text-white d-inline-block p-1 "> {{ $message }} </div>
-                                @enderror
-                            </div>
 
 
 

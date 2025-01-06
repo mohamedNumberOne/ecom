@@ -69,13 +69,14 @@
 
                             <hr>
 
+                            
                             <div class="col-md-12 position-relative">
                                 <div class="row">
                                     <div class="col-md-6 col-12">
-                                        <label for="validationTooltipUsername" class="form-label">photo_2</label>
+                                        <label for="validationTooltipUsername3" class="form-label">photo_2</label>
                                         <div class="input-group has-validation">
 
-                                            <input type="file" class="form-control" id="validationTooltipUsername"
+                                            <input type="file" class="form-control" id="validationTooltipUsername3"
                                                   accept="image/*" name="photo_2">
 
                                             <div class="invalid-tooltip">

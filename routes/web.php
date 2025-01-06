@@ -37,7 +37,8 @@ Route::prefix("admin")->middleware('auth')->group(function () {
 
     Route::get('/products_page', [ProductController::class, 'products_page_admin'])->name('products_page_admin'); // afficher
     Route::post('/add_product', [ProductController::class, 'store'])->name('add_product'); // add 
-    Route::get('/update_product/{id}', [ProductController::class, 'update_product'])->name('update_product_page'); // modif 
+    Route::get('/update_product/{id}', [ProductController::class, 'update_product_page'])->name('update_product_page'); // modif page
+    Route::put('/update_product/{id}', [ProductController::class, 'update_product'])->name('update_product'); // modif pro
     Route::delete('/delete_product{id}', [ProductController::class, 'delete'])->name('delete_product'); // supp
 
    

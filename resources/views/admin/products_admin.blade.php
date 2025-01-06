@@ -75,22 +75,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-6 col-12 position-relative">
-                                <label class="form-label"> Categorie </label>
-                                <select class="form-control" required name="category_id">
-                                    <option value=""> </option>
-                                    @foreach ($all_categories as $cat)
-                                        <option value="{{ $cat->id }}"> {{ $cat->nom_category }} </option>
-                                    @endforeach
-                                </select>
 
-                                <div class="invalid-tooltip">
-                                    Ajouter la Categorie
-                                </div>
-                                @error('category_id')
-                                    <div class="bg-danger text-white d-inline-block p-1 "> {{ $message }} </div>
-                                @enderror
-                            </div>
 
 
                             <div class="col-md-6  col-12 position-relative">
