@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <h1 class="mb-4"> Modifier Le produit ' {{ $pro->nom_pro }} ' <i
+                    <h1 class="mb-4">  Modifier Le produit ' {{ $pro->nom_pro }} ' <i
                             class="fa-solid fa-pen-to-square"></i> </h1>
 
                     <div>
