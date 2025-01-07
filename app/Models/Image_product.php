@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Product;
 
 class Image_product extends Model
 {
@@ -16,5 +17,13 @@ class Image_product extends Model
         'path_image' ,
         
     ] ;
+
+    public function product () {
+        return  $this->belongsTo(Product::class) ;
+    }
+
+
+
+
 
 }

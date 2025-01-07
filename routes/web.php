@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ImageProductController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -39,10 +40,11 @@ Route::prefix("admin")->middleware('auth')->group(function () {
     Route::post('/add_product', [ProductController::class, 'store'])->name('add_product'); // add 
     Route::get('/update_product/{id}', [ProductController::class, 'update_product_page'])->name('update_product_page'); // modif page
     Route::put('/update_product/{id}', [ProductController::class, 'update_product'])->name('update_product'); // modif pro
-    Route::delete('/delete_product{id}', [ProductController::class, 'delete'])->name('delete_product'); // supp
+    Route::delete('/delete_product{id}', [ProductController::class, 'delete'])->name('delete_product'); // supp pro
+    Route::delete('/supp_img_slider{id}', [ImageProductController::class, 'supp_img_slider'])->name('supp_img_slider'); // supp img slider 
 
-   
 
+    
     
 
 

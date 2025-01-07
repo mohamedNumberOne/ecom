@@ -129,7 +129,7 @@
                 <table class="table table-striped table-hover">
                     <tr>
                         <td> Produit </td>
-                        <td> photo Principale</td>
+                        <td> photo </td>
                         <td> prix </td>
                         <td> Catégorie </td>
                         <td> date création </td>
@@ -142,7 +142,7 @@
                             <img src="{{ asset('storage/' . $pro->photo_principale) }}" alt="img" width="50px">
                         </td>
 
-                        <td> {{ $pro->prix }} </td>
+                        <td> {{ $pro->prix }}  Da</td>
                         <td> {{ $pro -> nom_category }} </td>
                         <td> {{ $pro->created_at ? $pro->created_at->format('Y/m/d') : 'Date inconnue' }}
                         </td>

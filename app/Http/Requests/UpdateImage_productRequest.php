@@ -11,7 +11,7 @@ class UpdateImage_productRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return 1;
     }
 
     /**

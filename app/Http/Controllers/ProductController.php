@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Image_product;
- 
+
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Controllers\CompanyController;
@@ -28,14 +28,14 @@ class ProductController extends CompanyController
      */
     public function products_page_admin()
     {
-        
-        
+
+
         $all_categories = $this->get_all_cat();
         $all_pro = Product::join('categories', 'products.category_id', '=', 'categories.id')
-        ->select('products.*', 'categories.nom_category')  // Sélectionner le produit et le nom de la catégorie
-        ->get();
+            ->select('products.*', 'categories.nom_category')  // Sélectionner le produit et le nom de la catégorie
+            ->get();
 
-        return view('admin.products_admin' , compact('all_pro' , "all_categories"  ) );
+        return view('admin.products_admin', compact('all_pro', "all_categories"));
     }
 
     public function get_all_cat()
@@ -87,7 +87,7 @@ class ProductController extends CompanyController
         if ($pro) {
 
 
-            file_exists($pro->photo_principale) ? unlink('storage/' .  $pro->photo_principale) : "";
+            file_exists('storage/' . $pro->photo_principale) ? unlink('storage/' .  $pro->photo_principale) : "";
 
             $msg = "Produit supprimé !";
             $class = "danger";
@@ -108,47 +108,52 @@ class ProductController extends CompanyController
         $pro = Product::find($id);
         $all_categories = $this->get_all_cat();
 
+
+        $images_slider = $pro->images;
+
         $msg = "Produit modifié !";
         $class = "success";
         if ($pro) {
-            $cat =  $pro-> category   ;
-            return view("admin.update_product", compact('pro', "all_categories" , "cat" ));
+            $cat =  $pro->category;
+            return view("admin.update_product", compact('pro', "all_categories", "cat", "images_slider"));
         } else {
 
             return redirect()->back();
         }
     }
 
+
+
+
+
     public function update_product($id, UpdateProductRequest $request)
     {
         $pro = Product::find($id);
-
+       
         if ($pro) {
 
             $path_photo_principale =  $pro->photo_principale;
-          
-            if(  $request -> hasFile('photo_slide') &&  1  ) {
- 
+
+            if ($request->hasFile('photo_slide')) {
+
                 // $request -> file('photo_slide') -> isValid()
                 $uploadedFiles = $request->file('photo_slide'); // Récupère tous les fichiers
                 // $filePaths = [];
-        
+
                 if ($uploadedFiles) {
                     foreach ($uploadedFiles as $file) {
                         // Stocke chaque fichier dans un répertoire
-                        $path = $file->store('products', 'public'); // Stocke dans storage/app/public/uploads
+                        $path = $file->store('produits', 'public'); // Stocke dans storage/app/public/uploads
                         // $filePaths[] = $path; 
 
                         // Enregistre dans la base de données
                         Image_product::create([
-                             
+
                             'path_image' => $path,
-                            'product_id' => $pro -> id ,
+                            'product_id' => $pro->id,
                         ]);
                     }
                 }
-
-                
             }
 
             if ($request->hasFile("photo_principale") &&  $request->file('photo_principale')->isValid()) {
@@ -157,7 +162,7 @@ class ProductController extends CompanyController
             }
 
             // > photo_principale
-            $pro-> update([
+            $pro->update([
 
                 'nom_pro'  => $request->nom_pro,
                 'photo_principale'  => $path_photo_principale,
@@ -175,7 +180,6 @@ class ProductController extends CompanyController
             $class = "danger";
         }
 
-        return redirect()->back()->with(['msg' => $msg, 'class' => $class  ]);
+        return redirect()->back()->with(['msg' => $msg, 'class' => $class]);
     }
-
 }
