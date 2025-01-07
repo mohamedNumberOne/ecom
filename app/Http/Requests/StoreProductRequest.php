@@ -28,7 +28,7 @@ class StoreProductRequest extends FormRequest
             'prix'  => 'required|numeric|max:99999|min:1',
             'type_mesure' => 'required',
             'details' => 'required|string',
-            'id' => 'exists:categories' ,
+            'categorie_id' => 'exists:categories' ,
 
 
         ];

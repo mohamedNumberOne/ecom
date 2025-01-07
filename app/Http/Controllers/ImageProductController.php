@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Image_product;
 use App\Http\Requests\StoreImage_productRequest;
 use App\Http\Requests\UpdateImage_productRequest;
-
+ 
 class ImageProductController extends Controller
 {
     /**
@@ -27,9 +27,10 @@ class ImageProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreImage_productRequest $request)
+    public function store(StoreImage_productRequest $request  )
     {
-        //
+
+
     }
 
     /**
