@@ -158,7 +158,7 @@ class ProductController extends CompanyController
 
             if ($request->hasFile("photo_principale") &&  $request->file('photo_principale')->isValid()) {
 
-                $path_photo_principale = store();
+                $path_photo_principale =   $request->file('photo_principale')-> store(  'produits' ,  'public' );
             }
 
             // > photo_principale
