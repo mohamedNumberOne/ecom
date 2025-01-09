@@ -9,4 +9,10 @@ class Color extends Model
 {
     /** @use HasFactory<\Database\Factories\ColorFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        "nom_couleur",
+        "code_couleur"
+
+    ];
 }

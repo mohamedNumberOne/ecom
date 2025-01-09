@@ -145,7 +145,7 @@
                                 @enderror
                             </div>
 
-
+<input type="color"  value="#" name="" id="">
                             
                             <div class="col-md-6 position-relative">
                                 <div class="row">
