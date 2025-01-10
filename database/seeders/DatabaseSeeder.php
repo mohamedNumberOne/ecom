@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        // $this->call(SizeSeeder::class); 
+        $this->call(SizeSeeder::class);  
         $this->call(ColorSeeder::class);
 
     }

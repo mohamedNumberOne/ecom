@@ -16,11 +16,11 @@ class ColorSeeder extends Seeder
     {
         
      DB::table('colors')->insert([
-        [ 'nom_couleur' =>  "blanc" , 'code_couleur' => "rgb(255,255,255)" ] , 
-        [ 'nom_couleur' =>  "noir" , 'code_couleur' => "rgb(0,0,0)" ] , 
-        [ 'nom_couleur' =>  "gris" , 'code_couleur' => "rgb(109, 109, 109)" ] , 
-        [ 'nom_couleur' =>  "bleu" , 'code_couleur' => "rgb(3, 41, 163)" ] , 
-        [ 'nom_couleur' =>  "marron" , 'code_couleur' => "rgb(128, 84, 4)" ] 
+        [ 'nom_couleur' =>  "blanc" , 'code_couleur' => "#ffffff" ] , 
+        [ 'nom_couleur' =>  "noir" , 'code_couleur' => "#000000" ] , 
+        [ 'nom_couleur' =>  "gris" , 'code_couleur' => "#8f8f8f" ] , 
+        [ 'nom_couleur' =>  "bleu" , 'code_couleur' => "#3442b2" ] , 
+        [ 'nom_couleur' =>  "marron" , 'code_couleur' => "#c48517" ] 
     ]);
     }
 }

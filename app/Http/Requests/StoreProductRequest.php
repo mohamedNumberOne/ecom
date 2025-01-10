@@ -26,7 +26,7 @@ class StoreProductRequest extends FormRequest
             'nom_pro' => 'required|string|max:255' ,
             'photo_principale' => 'required|image|max:2048|',
             'prix'  => 'required|numeric|max:99999|min:1',
-            'type_mesure' => 'required',
+            // 'type_mesure' => 'required', 
             'details' => 'required|string',
             'categorie_id' => 'exists:categories' ,
 

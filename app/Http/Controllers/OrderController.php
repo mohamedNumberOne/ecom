@@ -12,8 +12,8 @@ class OrderController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
+    {   $all_orders = Order::all() ; 
+        return  view( "admin.orders_page" , compact('all_orders') ) ;
     }
 
     /**

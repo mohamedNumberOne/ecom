@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string("nom_pro");
             $table->string("photo_principale");
             $table->integer("prix");
-            $table->enum("type_mesure" , [ "vetements" , "chaussures" ] );
+            // $table->enum("type_mesure" , [ "vetements" , "chaussures" ] ); 
             $table->text("details") -> nullable() ;
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories') -> onDelete("cascade") ;
+            $table->unsignedBigInteger('category_id')->nullable();  
+            $table->foreign('category_id')->references('id')->on('categories') -> onDelete("set null") ;
 
             $table->timestamps();
         });

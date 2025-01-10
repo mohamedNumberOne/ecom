@@ -55,12 +55,13 @@ class ProductController extends CompanyController
         ) {
 
             $path_photo =  $request->file('photo_principale')->store('produits',   'public');
+
             Product::create([
 
                 'nom_pro'  =>  $request->nom_pro,
                 'photo_principale' =>  $path_photo,
                 'prix' => $request->prix,
-                'type_mesure' => $request->type_mesure,
+                // 'type_mesure' => $request->type_mesure, 
                 'details' => $request->details,
                 'category_id' => $request->category_id,
 
@@ -167,7 +168,7 @@ class ProductController extends CompanyController
                 'nom_pro'  => $request->nom_pro,
                 'photo_principale'  => $path_photo_principale,
                 'prix'  => $request->prix,
-                'type_mesure'  => $request->type_mesure,
+                // 'type_mesure'  => $request->type_mesure, 
                 'details'  => $request->details,
                 'category_id'  => $request->category_id,
 

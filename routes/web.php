@@ -5,7 +5,9 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ImageProductController;
+use App\Http\Controllers\OrderController;
 use App\Models\Product;
+use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Route;
 
 
@@ -43,6 +45,10 @@ Route::prefix("admin")->middleware('auth')->group(function () {
     Route::put('/update_product/{id}', [ProductController::class, 'update_product'])->name('update_product'); // modif pro
     Route::delete('/delete_product{id}', [ProductController::class, 'delete'])->name('delete_product'); // supp pro
     Route::delete('/supp_img_slider{id}', [ImageProductController::class, 'supp_img_slider'])->name('supp_img_slider'); // supp img slider 
+
+    
+    // commandes : 
+    Route::get('/orders' ,  [OrderController::class , 'index' ]  )->name('orders_page') ;
 
 
     Route::get('/dashboard', function () {

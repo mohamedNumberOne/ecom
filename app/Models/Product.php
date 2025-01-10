@@ -19,7 +19,7 @@ class Product extends Model
         "nom_pro",
         "photo_principale",
         "prix",
-        "type_mesure",
+        
         "details",
         "category_id",
         // "path_image"

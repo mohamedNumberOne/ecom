@@ -58,7 +58,7 @@
 
 
 
-                            <div class="col-md-6 col-12 position-relative">
+                            {{-- <div class="col-md-6 col-12 position-relative">
                                 <label class="form-label"> type mesure </label>
                                 <select class="form-control" required name="type_mesure">
                                     <option value=""></option>
@@ -72,7 +72,7 @@
                                 @error('type_mesure')
                                 <div class="bg-danger text-white d-inline-block p-1 "> {{ $message }} </div>
                                 @enderror
-                            </div>
+                            </div> --}}
 
 
                             <div class="col-md-6 col-12 position-relative">
